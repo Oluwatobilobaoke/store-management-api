@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler');
-const Category = require('../models/category.model');
-const ErrorResponse = require('../_helpers/error-handler');
+const Category = require('../models/category');
+const ErrorResponse = require('../utils/error-handler');
 
 //Get all Categories
 exports.getCategories = asyncHandler(async (req, res, next) => {

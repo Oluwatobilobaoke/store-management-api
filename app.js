@@ -8,7 +8,9 @@ require('dotenv').config();
 // routes
 
 const auth = require('./routes/auth');
-
+const category = require('./routes/category')
+const shop = require('./routes/shop');
+const user = require('./routes/user');
 
 
 const connectDatabase = require('./config/db.config');
@@ -39,10 +41,9 @@ app.use(cors());
 // mount routers
 
 app.use('/api/v1/auth', auth);
-
-
-
-
+app.use('/api/v1/category', category);
+app.use('/api/v1/', shop);
+app.use('/api/v1/user', user);
 
 
 // handle error

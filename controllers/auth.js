@@ -131,7 +131,7 @@ exports.updateProfile = asyncHandler(async (req, res, next) => {
 
     res.status(200).json({
         success: true,
-        payload: prpfile,
+        payload: user,
     });
 });
 
