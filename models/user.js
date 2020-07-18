@@ -45,39 +45,39 @@ const userSchema = new Schema({
   }
 });
 
-// Instance method to add an item to user's cart
+// Instance method to add an product to user's cart
 
 userSchema.methods.addToCart = function(product) {
-  const cartProductIndex = this.cart.products.findIndex(cartProduct => {
-    return cartProduct.productId.toString() === product._id.toString();
+  const cartGoodIndex = this.cart.products.findIndex(cartGood => {
+    return cartGood.productId.toString() === product._id.toString();
   });
 
   let newQty = 1;
-  const updatedCartProducts = [...this.cart.products];
+  const updatedCartproducts = [...this.cart.products];
 
-  if (cartProductIndex >= 0) {
-    newQty = this.cart.products[cartProductIndex].quantity + 1;
-    updatedCartProducts[cartProductIndex].quantity = newQty;
+  if (cartGoodIndex >= 0) {
+    newQty = this.cart.products[cartGoodIndex].quantity + 1;
+    updatedCartproducts[cartGoodIndex].quantity = newQty;
   } else {
-    updatedCartProducts.push({
-        productId: product._id,
+    updatedCartproducts.push({
+      productId: product._id,
       quantity: newQty
     });
   }
   this.cart = {
-    products: updatedCartProducts
+    products: updatedCartproducts
   };
 
   return this.save();
 };
 
-// Instance method to remove an item from user's cart
+// Instance method to remove an product from user's cart
 
 userSchema.methods.removeFromCart = function(id) {
-  const updatedCartProducts = this.cart.products.filter(product => {
+  const updatedCartproducts = this.cart.products.filter(product => {
     return product.productId.toString() !== id.toString();
   });
-  this.cart.products = updatedCartProducts;
+  this.cart.products = updatedCartproducts;
   return this.save();
 };
 
